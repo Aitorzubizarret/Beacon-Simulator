@@ -60,6 +60,7 @@ class ViewController: UIViewController {
     private func configureUI() {
         // Title.
         self.titleLabel.text = "Beacon Simulator"
+        self.titleLabel.textAlignment = .center
         
         // Labels.
         self.uuidLabel.text = "UUID"
