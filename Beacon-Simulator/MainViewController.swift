@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Beacon-Simulator
 //
-//  Created by Aitor Zubizarreta on 27/11/2020.
+//  Created by Aitor Zubizarreta on 01/12/2020.
 //  Copyright © 2020 Aitor Zubizarreta. All rights reserved.
 //
 
@@ -10,11 +10,10 @@ import UIKit
 import CoreLocation
 import CoreBluetooth
 
-class ViewController: UIViewController {
-    
+class MainViewController: UIViewController {
+
     // MARK: - UI
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var uuidLabel: UILabel!
     @IBOutlet weak var uuidTextfield: UITextField!
     @IBOutlet weak var majorLabel: UILabel!
@@ -22,12 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var minorLabel: UILabel!
     @IBOutlet weak var minorTextfield: UITextField!
     @IBOutlet weak var startStopBtn: UIButton!
-    @IBAction func startStopBtnPressed(_ sender: Any) {
-        if self.isOn {
-            self.stop()
-        } else {
-            self.start()
-        }
+    @IBAction func startStopBtnTapped(_ sender: Any) {
+        self.startStopButtonFunction()
     }
     
     // MARK: - Properties
@@ -48,35 +43,46 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureUI()
+        // Navigation bar title.
+        self.title = "Beacon Simulator"
         
         // Ask Location Permission.
         locationManager.requestWhenInUseAuthorization()
+        
+        self.configureUI()
     }
     
     ///
     /// Configures the UI.
     ///
     private func configureUI() {
-        // Title.
-        self.titleLabel.text = "Beacon Simulator"
-        self.titleLabel.textAlignment = .center
-        
+
         // Labels.
         self.uuidLabel.text = "UUID"
         self.majorLabel.text = "Major"
         self.minorLabel.text = "Minor"
-        
+
         // Textfields.
         self.uuidTextfield.text = "00000000-0000-0000-0000-00000000aaaa"
         self.majorTextfield.text = "1"
         self.minorTextfield.text = "1"
-        
+
         // Button.
         if self.isOn {
             self.startStopBtn.setTitle("Stop", for: .normal)
         } else {
             self.startStopBtn.setTitle("Start", for: .normal)
+        }
+    }
+    
+    ///
+    /// Start / Stop button tapped.
+    ///
+    private func startStopButtonFunction() {
+        if self.isOn {
+            self.stop()
+        } else {
+            self.start()
         }
     }
     
@@ -91,22 +97,22 @@ class ViewController: UIViewController {
         } else {
             self.startStopBtn.setTitle("Start", for: .normal)
         }
-        
+            
         self.startTransmitting()
     }
-    
+        
     ///
     /// Stop Button Pressed.
     ///
     func stop() {
         self.isOn = false
-        
+            
         if self.isOn {
             self.startStopBtn.setTitle("Stop", for: .normal)
         } else {
             self.startStopBtn.setTitle("Start", for: .normal)
         }
-        
+            
         self.stopTransmitting()
     }
     
@@ -114,6 +120,7 @@ class ViewController: UIViewController {
     /// Start transmitting the beacon signal.
     ///
     func startTransmitting() {
+        
         // get values from textfields.
         let uuidString: String = self.uuidTextfield.text ?? ""
         let majorString: String = self.majorTextfield.text ?? ""
@@ -127,7 +134,7 @@ class ViewController: UIViewController {
         
         self.region = CLBeaconRegion(proximityUUID: proximityUUID!, major: major, minor: minor, identifier: beaconID)
         let peripheralData = (region?.peripheralData(withMeasuredPower: nil))!
-        
+
         self.peripheralManager.startAdvertising(((peripheralData as NSDictionary) as! [String: Any]))
     }
     
@@ -137,12 +144,14 @@ class ViewController: UIViewController {
     func stopTransmitting() {
         self.peripheralManager.stopAdvertising()
     }
+
 }
 
-extension ViewController: CBPeripheralManagerDelegate {
+// MARK: - Extension Core Bluetooth
+
+extension MainViewController: CBPeripheralManagerDelegate {
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        
         switch peripheral.state {
         case .poweredOn:
             if self.isOn {

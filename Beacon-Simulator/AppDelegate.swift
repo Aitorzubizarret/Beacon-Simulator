@@ -14,7 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Main View Controller.
+        let mainVC: UIViewController = MainViewController(nibName: nil, bundle: nil)
+        
+        // Navigation Controller for iOS 12 and lower.
+        let navigationController: UINavigationController = UINavigationController()
+        navigationController.viewControllers = [mainVC]
+        
+        // Creates the window.
+        let frame = UIScreen.main.bounds
+        window = UIWindow(frame: frame)
+        window!.rootViewController = navigationController
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
