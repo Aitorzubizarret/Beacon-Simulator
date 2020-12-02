@@ -28,7 +28,19 @@ class MainViewController: UIViewController {
     // MARK: - Properties
     
     let locationManager = CLLocationManager()
-    var isOn: Bool = false
+    var isOn: Bool = false {
+        didSet {
+            if isOn {
+                self.uuidTextfield.isEnabled = false
+                self.majorTextfield.isEnabled = false
+                self.minorTextfield.isEnabled = false
+            } else {
+                self.uuidTextfield.isEnabled = true
+                self.majorTextfield.isEnabled = true
+                self.minorTextfield.isEnabled = true
+            }
+        }
+    }
     var region: CLBeaconRegion?
     var _peripheralManager: CBPeripheralManager?
     var peripheralManager: CBPeripheralManager {
