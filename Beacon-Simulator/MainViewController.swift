@@ -78,7 +78,11 @@ class MainViewController: UIViewController {
         self.uuidTextfield.text = "00000000-0000-0000-0000-00000000aaaa"
         self.majorTextfield.text = "1"
         self.minorTextfield.text = "1"
-
+        
+        // Tap Gesture Recognizer to call a method to dismiss the keyboard.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         // Button.
         if self.isOn {
             self.startStopBtn.setTitle("Stop", for: .normal)
@@ -155,6 +159,13 @@ class MainViewController: UIViewController {
     ///
     func stopTransmitting() {
         self.peripheralManager.stopAdvertising()
+    }
+    
+    ///
+    /// Dismisses the keyboard.
+    ///
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }
