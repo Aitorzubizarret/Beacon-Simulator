@@ -78,6 +78,9 @@ class MainViewController: UIViewController {
         self.uuidTextfield.text = "00000000-0000-0000-0000-00000000aaaa"
         self.majorTextfield.text = "1"
         self.minorTextfield.text = "1"
+        self.uuidTextfield.keyboardType = UIKeyboardType.default
+        self.majorTextfield.keyboardType = UIKeyboardType.decimalPad
+        self.minorTextfield.keyboardType = UIKeyboardType.decimalPad
         
         // Tap Gesture Recognizer to call a method to dismiss the keyboard.
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
