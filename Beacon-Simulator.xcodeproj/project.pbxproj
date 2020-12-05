@@ -13,6 +13,7 @@
 		1A5380A02571A37600E7FE62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A53809E2571A37600E7FE62 /* LaunchScreen.storyboard */; };
 		1A6063292576DEE3006D98E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6063272576DEE3006D98E8 /* MainViewController.swift */; };
 		1A60632A2576DEE3006D98E8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6063282576DEE3006D98E8 /* MainViewController.xib */; };
+		1A963124257BC3D000CFA178 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A963123257BC3D000CFA178 /* Beacon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1A5380A12571A37600E7FE62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A6063272576DEE3006D98E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A6063282576DEE3006D98E8 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		1A963123257BC3D000CFA178 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		1A5380922571A37500E7FE62 /* Beacon-Simulator */ = {
 			isa = PBXGroup;
 			children = (
+				1A963126257BC46F00CFA178 /* Controllers */,
+				1A963125257BC46400CFA178 /* Views */,
+				1A963122257BC3BF00CFA178 /* Models */,
 				1A5380932571A37500E7FE62 /* AppDelegate.swift */,
 				1A5380952571A37500E7FE62 /* SceneDelegate.swift */,
 				1A53809C2571A37600E7FE62 /* Assets.xcassets */,
 				1A53809E2571A37600E7FE62 /* LaunchScreen.storyboard */,
 				1A5380A12571A37600E7FE62 /* Info.plist */,
-				1A6063272576DEE3006D98E8 /* MainViewController.swift */,
-				1A6063282576DEE3006D98E8 /* MainViewController.xib */,
 			);
 			path = "Beacon-Simulator";
+			sourceTree = "<group>";
+		};
+		1A963122257BC3BF00CFA178 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A963123257BC3D000CFA178 /* Beacon.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1A963125257BC46400CFA178 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A6063282576DEE3006D98E8 /* MainViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A963126257BC46F00CFA178 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1A6063272576DEE3006D98E8 /* MainViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +168,7 @@
 				1A5380942571A37500E7FE62 /* AppDelegate.swift in Sources */,
 				1A5380962571A37500E7FE62 /* SceneDelegate.swift in Sources */,
 				1A6063292576DEE3006D98E8 /* MainViewController.swift in Sources */,
+				1A963124257BC3D000CFA178 /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

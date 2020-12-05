@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
         }
         return _peripheralManager!
     }
+    var demoBeacon: Beacon?
     
     // MARK: - Methods
     
@@ -61,7 +62,16 @@ class MainViewController: UIViewController {
         // Ask Location Permission.
         locationManager.requestWhenInUseAuthorization()
         
+        self.createDemoBeacon()
+        
         self.configureUI()
+    }
+    
+    ///
+    /// Creates a demo beacon.
+    ///
+    private func createDemoBeacon() {
+        self.demoBeacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "1", name: "Demo Beacon")
     }
     
     ///
@@ -75,12 +85,15 @@ class MainViewController: UIViewController {
         self.minorLabel.text = "Minor"
 
         // Textfields.
-        self.uuidTextfield.text = "00000000-0000-0000-0000-00000000aaaa"
-        self.majorTextfield.text = "1"
-        self.minorTextfield.text = "1"
         self.uuidTextfield.keyboardType = UIKeyboardType.default
         self.majorTextfield.keyboardType = UIKeyboardType.decimalPad
         self.minorTextfield.keyboardType = UIKeyboardType.decimalPad
+        
+        if let beacon = self.demoBeacon {
+            self.uuidTextfield.text = beacon.uuid
+            self.majorTextfield.text = beacon.major
+            self.minorTextfield.text = beacon.minor
+        }
         
         // Tap Gesture Recognizer to call a method to dismiss the keyboard.
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
