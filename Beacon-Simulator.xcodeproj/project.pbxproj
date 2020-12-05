@@ -14,6 +14,14 @@
 		1A6063292576DEE3006D98E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6063272576DEE3006D98E8 /* MainViewController.swift */; };
 		1A60632A2576DEE3006D98E8 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6063282576DEE3006D98E8 /* MainViewController.xib */; };
 		1A963124257BC3D000CFA178 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A963123257BC3D000CFA178 /* Beacon.swift */; };
+		1ACE1CBC257BF77300B9933C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE1CBB257BF77300B9933C /* Project.swift */; };
+		1ACE1CBF257BFAAC00B9933C /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE1CBD257BFAAC00B9933C /* ProjectTableViewCell.swift */; };
+		1ACE1CC0257BFAAC00B9933C /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE1CBE257BFAAC00B9933C /* ProjectTableViewCell.xib */; };
+		1ACE1CC3257C096E00B9933C /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE1CC1257C096E00B9933C /* ProjectDetailViewController.swift */; };
+		1ACE1CC4257C096E00B9933C /* ProjectDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE1CC2257C096E00B9933C /* ProjectDetailViewController.xib */; };
+		1ACE1CC7257C225C00B9933C /* BeaconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE1CC5257C225C00B9933C /* BeaconTableViewCell.swift */; };
+		1ACE1CC8257C225C00B9933C /* BeaconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE1CC6257C225C00B9933C /* BeaconTableViewCell.xib */; };
+		1AF43D19257BC7B500C99BCF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF43D18257BC7B500C99BCF /* TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		1A6063272576DEE3006D98E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1A6063282576DEE3006D98E8 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		1A963123257BC3D000CFA178 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		1ACE1CBB257BF77300B9933C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		1ACE1CBD257BFAAC00B9933C /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProjectTableViewCell.swift; path = "Beacon-Simulator/TableView/ProjectTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		1ACE1CBE257BFAAC00B9933C /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProjectTableViewCell.xib; path = "Beacon-Simulator/ProjectTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		1ACE1CC1257C096E00B9933C /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
+		1ACE1CC2257C096E00B9933C /* ProjectDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDetailViewController.xib; sourceTree = "<group>"; };
+		1ACE1CC5257C225C00B9933C /* BeaconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTableViewCell.swift; sourceTree = "<group>"; };
+		1ACE1CC6257C225C00B9933C /* BeaconTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeaconTableViewCell.xib; sourceTree = "<group>"; };
+		1AF43D18257BC7B500C99BCF /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 		1A5380922571A37500E7FE62 /* Beacon-Simulator */ = {
 			isa = PBXGroup;
 			children = (
+				1ACE1CC9257C226F00B9933C /* TableView */,
 				1A963126257BC46F00CFA178 /* Controllers */,
 				1A963125257BC46400CFA178 /* Views */,
 				1A963122257BC3BF00CFA178 /* Models */,
@@ -74,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				1A963123257BC3D000CFA178 /* Beacon.swift */,
+				1ACE1CBB257BF77300B9933C /* Project.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -82,6 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				1A6063282576DEE3006D98E8 /* MainViewController.xib */,
+				1ACE1CC2257C096E00B9933C /* ProjectDetailViewController.xib */,
+				1ACE1CBE257BFAAC00B9933C /* ProjectTableViewCell.xib */,
+				1ACE1CC6257C225C00B9933C /* BeaconTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -90,8 +111,19 @@
 			isa = PBXGroup;
 			children = (
 				1A6063272576DEE3006D98E8 /* MainViewController.swift */,
+				1ACE1CC1257C096E00B9933C /* ProjectDetailViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1ACE1CC9257C226F00B9933C /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				1AF43D18257BC7B500C99BCF /* TableView.swift */,
+				1ACE1CBD257BFAAC00B9933C /* ProjectTableViewCell.swift */,
+				1ACE1CC5257C225C00B9933C /* BeaconTableViewCell.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5380A02571A37600E7FE62 /* LaunchScreen.storyboard in Resources */,
+				1ACE1CC8257C225C00B9933C /* BeaconTableViewCell.xib in Resources */,
+				1ACE1CC4257C096E00B9933C /* ProjectDetailViewController.xib in Resources */,
 				1A60632A2576DEE3006D98E8 /* MainViewController.xib in Resources */,
 				1A53809D2571A37600E7FE62 /* Assets.xcassets in Resources */,
+				1ACE1CC0257BFAAC00B9933C /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,9 +201,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5380942571A37500E7FE62 /* AppDelegate.swift in Sources */,
+				1ACE1CC7257C225C00B9933C /* BeaconTableViewCell.swift in Sources */,
+				1ACE1CBF257BFAAC00B9933C /* ProjectTableViewCell.swift in Sources */,
+				1AF43D19257BC7B500C99BCF /* TableView.swift in Sources */,
 				1A5380962571A37500E7FE62 /* SceneDelegate.swift in Sources */,
 				1A6063292576DEE3006D98E8 /* MainViewController.swift in Sources */,
 				1A963124257BC3D000CFA178 /* Beacon.swift in Sources */,
+				1ACE1CBC257BF77300B9933C /* Project.swift in Sources */,
+				1ACE1CC3257C096E00B9933C /* ProjectDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

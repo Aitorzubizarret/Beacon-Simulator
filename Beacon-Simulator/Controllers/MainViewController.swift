@@ -11,45 +11,12 @@ import CoreLocation
 import CoreBluetooth
 
 class MainViewController: UIViewController {
-
-    // MARK: - UI
-    
-    @IBOutlet weak var uuidLabel: UILabel!
-    @IBOutlet weak var uuidTextfield: UITextField!
-    @IBOutlet weak var majorLabel: UILabel!
-    @IBOutlet weak var majorTextfield: UITextField!
-    @IBOutlet weak var minorLabel: UILabel!
-    @IBOutlet weak var minorTextfield: UITextField!
-    @IBOutlet weak var startStopBtn: UIButton!
-    @IBAction func startStopBtnTapped(_ sender: Any) {
-        self.startStopButtonFunction()
-    }
     
     // MARK: - Properties
     
     let locationManager = CLLocationManager()
-    var isOn: Bool = false {
-        didSet {
-            if isOn {
-                self.uuidTextfield.isEnabled = false
-                self.majorTextfield.isEnabled = false
-                self.minorTextfield.isEnabled = false
-            } else {
-                self.uuidTextfield.isEnabled = true
-                self.majorTextfield.isEnabled = true
-                self.minorTextfield.isEnabled = true
-            }
-        }
-    }
-    var region: CLBeaconRegion?
-    var _peripheralManager: CBPeripheralManager?
-    var peripheralManager: CBPeripheralManager {
-        if _peripheralManager == nil {
-            _peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
-        }
-        return _peripheralManager!
-    }
-    var demoBeacon: Beacon?
+    var tableView: TableView?
+    var projectList: [Project] = []
     
     // MARK: - Methods
     
@@ -57,159 +24,59 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         // Navigation bar title.
-        self.title = "Beacon Simulator"
+        self.title = "Projects"
         
         // Ask Location Permission.
         locationManager.requestWhenInUseAuthorization()
         
-        self.createDemoBeacon()
+        self.createDemoProjects()
         
-        self.configureUI()
+        self.addTableView()
     }
     
     ///
-    /// Creates a demo beacon.
+    /// Creates demo beacons.
     ///
-    private func createDemoBeacon() {
-        self.demoBeacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "1", name: "Demo Beacon")
+    private func createDemoProjects() {
+        let beacon1: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "1", name: "Beacon 1")
+        let beacon2: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "2", name: "Beacon 2")
+        let beacon3: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "3", name: "Beacon 3")
+        
+        let project1: Project = Project(name: "Project 1", beaconList: [beacon1, beacon2])
+        let project2: Project = Project(name: "Project 2", beaconList: [beacon3])
+        
+        self.projectList.append(project1)
+        self.projectList.append(project2)
     }
     
     ///
-    /// Configures the UI.
+    /// Adds a TableView.
     ///
-    private func configureUI() {
-
-        // Labels.
-        self.uuidLabel.text = "UUID"
-        self.majorLabel.text = "Major"
-        self.minorLabel.text = "Minor"
-
-        // Textfields.
-        self.uuidTextfield.keyboardType = UIKeyboardType.default
-        self.majorTextfield.keyboardType = UIKeyboardType.decimalPad
-        self.minorTextfield.keyboardType = UIKeyboardType.decimalPad
+    private func addTableView() {
         
-        if let beacon = self.demoBeacon {
-            self.uuidTextfield.text = beacon.uuid
-            self.majorTextfield.text = beacon.major
-            self.minorTextfield.text = beacon.minor
-        }
+        // Creates the UITableView
+        self.tableView = TableView(size: self.view.bounds, customCellName: TableView.customCellType.Project, cellHeight: 40)
         
-        // Tap Gesture Recognizer to call a method to dismiss the keyboard.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        // Button.
-        if self.isOn {
-            self.startStopBtn.setTitle("Stop", for: .normal)
-        } else {
-            self.startStopBtn.setTitle("Start", for: .normal)
-        }
-    }
-    
-    ///
-    /// Start / Stop button tapped.
-    ///
-    private func startStopButtonFunction() {
-        if self.isOn {
-            self.stop()
-        } else {
-            self.start()
-        }
-    }
-    
-    ///
-    /// Start Button Pressed.
-    ///
-    func start() {
-        self.isOn = true
-        
-        if self.isOn {
-            self.startStopBtn.setTitle("Stop", for: .normal)
-        } else {
-            self.startStopBtn.setTitle("Start", for: .normal)
-        }
+        // Check the TableView.
+        if let tableView = self.tableView {
+            tableView.setObjectData(objects: self.projectList as [Project])
+            tableView.actionsDelegate = self
             
-        self.startTransmitting()
-    }
-        
-    ///
-    /// Stop Button Pressed.
-    ///
-    func stop() {
-        self.isOn = false
-            
-        if self.isOn {
-            self.startStopBtn.setTitle("Stop", for: .normal)
-        } else {
-            self.startStopBtn.setTitle("Start", for: .normal)
+            // Check the UIView from the TableView.
+            if let view: UIView = tableView.getTableView() {
+                self.view.addSubview(view)
+            }
         }
-            
-        self.stopTransmitting()
     }
-    
-    ///
-    /// Start transmitting the beacon signal.
-    ///
-    func startTransmitting() {
-        
-        // get values from textfields.
-        let uuidString: String = self.uuidTextfield.text ?? ""
-        let majorString: String = self.majorTextfield.text ?? ""
-        let minorString: String = self.minorTextfield.text ?? ""
-        
-        // Create the beacon region.
-        let proximityUUID = UUID(uuidString: uuidString)
-        let major: CLBeaconMajorValue = UInt16(majorString) ?? 1
-        let minor: CLBeaconMinorValue = UInt16(minorString) ?? 1
-        let beaconID = "BeaconSimulator"
-        
-        self.region = CLBeaconRegion(proximityUUID: proximityUUID!, major: major, minor: minor, identifier: beaconID)
-        let peripheralData = (region?.peripheralData(withMeasuredPower: nil))!
-
-        self.peripheralManager.startAdvertising(((peripheralData as NSDictionary) as! [String: Any]))
-    }
-    
-    ///
-    /// Stop transmitting the beacon signal.
-    ///
-    func stopTransmitting() {
-        self.peripheralManager.stopAdvertising()
-    }
-    
-    ///
-    /// Dismisses the keyboard.
-    ///
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-
 }
 
-// MARK: - Extension Core Bluetooth
+// MARK: - TableView Actions Delegate
 
-extension MainViewController: CBPeripheralManagerDelegate {
+extension MainViewController: TableViewActionsDelegate {
     
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        switch peripheral.state {
-        case .poweredOn:
-            if self.isOn {
-                self.startTransmitting()
-            } else {
-                self.stopTransmitting()
-            }
-        case .poweredOff:
-            print("Bluetooth is OFF")
-        case .resetting:
-            print("Bluetooth is RESETTING")
-        case .unauthorized:
-            print("Bluetooth is UNAUTHORIZED")
-        case .unknown:
-            print("Bluetooth is UNKNOWN")
-        case .unsupported:
-            print("Bluetooth is UNSUPPORTED")
-        @unknown default:
-            print("UNKNOWN")
-        }
+    func rowTapped(indexPath: IndexPath) {
+        let projectDetailVC: ProjectDetailViewController = ProjectDetailViewController()
+        projectDetailVC.project = self.projectList[indexPath.row]
+        self.navigationController?.pushViewController(projectDetailVC, animated: true)
     }
 }
