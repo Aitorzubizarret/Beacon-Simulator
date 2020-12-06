@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
     private func addTableView() {
         
         // Creates the UITableView
-        self.tableView = TableView(size: self.view.bounds, customCellName: TableView.customCellType.Project, cellHeight: 40)
+        self.tableView = TableView(size: self.view.bounds, customCellName: TableView.customCellType.Project, cellHeight: 60)
         
         // Check the TableView.
         if let tableView = self.tableView {

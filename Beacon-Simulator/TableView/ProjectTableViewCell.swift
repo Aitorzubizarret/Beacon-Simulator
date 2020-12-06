@@ -13,6 +13,7 @@ class ProjectTableViewCell: UITableViewCell {
     // MARK: - UI
     
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var beaconsInProject: UILabel!
     
     // MARK: - Methods
     
@@ -31,7 +32,11 @@ class ProjectTableViewCell: UITableViewCell {
     /// Displays the data of the received object.
     ///
     public func displayData(project: Project) {
+        self.title.font = UIFont(name: "Arial", size: 16)
+        self.beaconsInProject.font = UIFont(name: "Arial", size: 12)
+        
         self.title.text = project.name
+        self.beaconsInProject.text = "\(project.beaconList.count) beacons."
+        self.beaconsInProject.text = (project.beaconList.count > 1) ? "\(project.beaconList.count) beacons." : "\(project.beaconList.count) beacon."
     }
-    
 }

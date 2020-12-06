@@ -79,6 +79,7 @@ extension TableView: UITableViewDataSource {
             return cell
         case customCellType.Beacon.rawValue:
             let cell: BeaconTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.tableViewCustomCellName, for: indexPath) as! BeaconTableViewCell
+            cell.selectionStyle = .none
             cell.displayData(beacon: self.objectList[indexPath.row] as! Beacon)
             return cell
         default:

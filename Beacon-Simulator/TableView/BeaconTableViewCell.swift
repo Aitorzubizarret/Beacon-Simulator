@@ -55,12 +55,12 @@ class BeaconTableViewCell: UITableViewCell {
     ///
     public func displayData(beacon: Beacon) {
         
-        self.uuidTitle.font = UIFont(name: "Arial", size: 10)
-        self.uuidValue.font = UIFont(name: "Arial", size: 10)
-        self.majorTitle.font = UIFont(name: "Arial", size: 10)
-        self.majorValue.font = UIFont(name: "Arial", size: 10)
-        self.minorTitle.font = UIFont(name: "Arial", size: 10)
-        self.minorValue.font = UIFont(name: "Arial", size: 10)
+        self.uuidTitle.font = UIFont(name: "Arial", size: 12)
+        self.uuidValue.font = UIFont(name: "Arial", size: 12)
+        self.majorTitle.font = UIFont(name: "Arial", size: 12)
+        self.majorValue.font = UIFont(name: "Arial", size: 12)
+        self.minorTitle.font = UIFont(name: "Arial", size: 12)
+        self.minorValue.font = UIFont(name: "Arial", size: 12)
         
         self.uuidTitle.text = "UUID : "
         self.uuidValue.text = beacon.uuid
