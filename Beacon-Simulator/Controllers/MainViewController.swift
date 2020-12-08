@@ -23,8 +23,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Navigation bar title.
-        self.title = "Projects"
+        self.configNavigationBar()
         
         // Ask Location Permission.
         locationManager.requestWhenInUseAuthorization()
@@ -32,6 +31,26 @@ class MainViewController: UIViewController {
         self.createDemoProjects()
         
         self.addTableView()
+    }
+    
+    ///
+    /// Configures the Navigation Bar.
+    ///
+    private func configNavigationBar() {
+        
+        // Sets a title.
+        self.title = "Projects"
+        
+        // Adds a button.
+        let addProject = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addProjectTapped))
+        navigationItem.rightBarButtonItem = addProject
+    }
+    
+    ///
+    /// Will show a new view to add a project.
+    ///
+    @objc func addProjectTapped() {
+        print("addProjectTapped")
     }
     
     ///
