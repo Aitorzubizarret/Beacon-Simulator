@@ -47,10 +47,11 @@ class MainViewController: UIViewController {
     }
     
     ///
-    /// Will show a new view to add a project.
+    /// Shows the view controller to create a new Project.
     ///
     @objc func addProjectTapped() {
-        print("addProjectTapped")
+        let newProjectVC: NewProjectViewController = NewProjectViewController()
+        self.present(newProjectVC, animated: true, completion: nil)
     }
     
     ///
