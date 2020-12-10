@@ -14,9 +14,9 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     
+    var projectsViewModel: ProjectsViewModel = ProjectsViewModel()
     let locationManager = CLLocationManager()
     var tableView: TableView?
-    var projectList: [Project] = []
     
     // MARK: - Methods
     
@@ -28,9 +28,20 @@ class MainViewController: UIViewController {
         // Ask Location Permission.
         locationManager.requestWhenInUseAuthorization()
         
-        self.createDemoProjects()
+        self.bind()
         
         self.addTableView()
+    }
+    
+    ///
+    /// Gets new data from the ViewModel.
+    ///
+    private func bind() {
+        self.projectsViewModel.binding = {
+            if let data = self.projectsViewModel.projectList {
+                self.tableView?.setObjectData(objects: data)
+            }
+        }
     }
     
     ///
@@ -51,22 +62,8 @@ class MainViewController: UIViewController {
     ///
     @objc func addProjectTapped() {
         let newProjectVC: NewProjectViewController = NewProjectViewController()
+        newProjectVC.projectsViewModel = self.projectsViewModel
         self.present(newProjectVC, animated: true, completion: nil)
-    }
-    
-    ///
-    /// Creates demo beacons.
-    ///
-    private func createDemoProjects() {
-        let beacon1: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "1", name: "Beacon 1")
-        let beacon2: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "2", name: "Beacon 2")
-        let beacon3: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "3", name: "Beacon 3")
-        
-        let project1: Project = Project(name: "Project 1", beaconList: [beacon1, beacon2])
-        let project2: Project = Project(name: "Project 2", beaconList: [beacon3])
-        
-        self.projectList.append(project1)
-        self.projectList.append(project2)
     }
     
     ///
@@ -79,12 +76,14 @@ class MainViewController: UIViewController {
         
         // Check the TableView.
         if let tableView = self.tableView {
-            tableView.setObjectData(objects: self.projectList as [Project])
-            tableView.actionsDelegate = self
-            
-            // Check the UIView from the TableView.
-            if let view: UIView = tableView.getTableView() {
-                self.view.addSubview(view)
+            if let projectList = self.projectsViewModel.projectList {
+                tableView.setObjectData(objects: projectList as [Project])
+                tableView.actionsDelegate = self
+                
+                // Check the UIView from the TableView.
+                if let view: UIView = tableView.getTableView() {
+                    self.view.addSubview(view)
+                }
             }
         }
     }
@@ -96,7 +95,9 @@ extension MainViewController: TableViewActionsDelegate {
     
     func rowTapped(indexPath: IndexPath) {
         let projectDetailVC: ProjectDetailViewController = ProjectDetailViewController()
-        projectDetailVC.project = self.projectList[indexPath.row]
-        self.navigationController?.pushViewController(projectDetailVC, animated: true)
+        if let projectList = self.projectsViewModel.projectList {
+            projectDetailVC.project = projectList[indexPath.row]
+            self.navigationController?.pushViewController(projectDetailVC, animated: true)
+        }
     }
 }

@@ -26,6 +26,7 @@ class NewProjectViewController: UIViewController {
     
     // MARK: - Properties
     
+    var projectsViewModel: ProjectsViewModel?
     
     // MARK: - Methods
     
@@ -48,18 +49,23 @@ class NewProjectViewController: UIViewController {
     }
     
     ///
-    ///
+    /// Hides the keyboard.
     ///
     @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     
     ///
-    /// Creates the new Project.
+    /// Creates a new Project.
     ///
     private func createNewProject() {
         if self.projectNameTextfield.text != "" {
-            print("Creates the new Project")
+            if let projectName: String = self.projectNameTextfield.text {
+                let newProject: Project = Project(name: projectName, beaconList: [])
+                self.projectsViewModel?.addProject(newProject: newProject)
+                
+                self.exitViewController()
+            }
         }
     }
     

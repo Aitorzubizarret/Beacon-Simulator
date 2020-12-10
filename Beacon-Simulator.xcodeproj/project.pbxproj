@@ -24,6 +24,7 @@
 		1AF43D19257BC7B500C99BCF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF43D18257BC7B500C99BCF /* TableView.swift */; };
 		4215EB0A2581882C00F05B89 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4215EB082581882C00F05B89 /* NewProjectViewController.swift */; };
 		4215EB0B2581882C00F05B89 /* NewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4215EB092581882C00F05B89 /* NewProjectViewController.xib */; };
+		428AC4B02582D25800614DB5 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		1AF43D18257BC7B500C99BCF /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		4215EB082581882C00F05B89 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		4215EB092581882C00F05B89 /* NewProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
+		428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				1A963126257BC46F00CFA178 /* Controllers */,
 				1A963125257BC46400CFA178 /* Views */,
 				1A963122257BC3BF00CFA178 /* Models */,
+				428AC4AE2582CE4500614DB5 /* ViewModels */,
 				1A5380932571A37500E7FE62 /* AppDelegate.swift */,
 				1A5380952571A37500E7FE62 /* SceneDelegate.swift */,
 				1A53809C2571A37600E7FE62 /* Assets.xcassets */,
@@ -130,6 +133,14 @@
 				1ACE1CC5257C225C00B9933C /* BeaconTableViewCell.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		428AC4AE2582CE4500614DB5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 				1A963124257BC3D000CFA178 /* Beacon.swift in Sources */,
 				1ACE1CBC257BF77300B9933C /* Project.swift in Sources */,
 				1ACE1CC3257C096E00B9933C /* ProjectDetailViewController.swift in Sources */,
+				428AC4B02582D25800614DB5 /* ProjectsViewModel.swift in Sources */,
 				4215EB0A2581882C00F05B89 /* NewProjectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

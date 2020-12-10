@@ -47,6 +47,7 @@ class TableView: NSObject {
     ///
     public func setObjectData(objects: [Any]) {
         self.objectList = objects
+        self.tableView?.reloadData()
     }
     
     ///
