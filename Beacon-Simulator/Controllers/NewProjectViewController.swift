@@ -64,6 +64,8 @@ class NewProjectViewController: UIViewController {
                 let newProject: Project = Project(name: projectName, beaconList: [])
                 self.projectsViewModel?.addProject(newProject: newProject)
                 
+                self.hideKeyboard()
+                
                 self.exitViewController()
             }
         }
