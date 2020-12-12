@@ -9,6 +9,7 @@
 import Foundation
 
 struct Project {
+    let id: UUID
     let name: String
     let beaconList: [Beacon]
 }

@@ -64,8 +64,8 @@ class ProjectsViewModel {
         let beacon30: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "30", name: "Beacon 30")
         let beacon31: Beacon = Beacon(uuid: "00000000-0000-0000-0000-00000000aaaa", major: "1", minor: "31", name: "Beacon 31")
         
-        let project1: Project = Project(name: "Project 1", beaconList: [beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beacon11, beacon12, beacon13, beacon14, beacon15, beacon16])
-        let project2: Project = Project(name: "Project 2", beaconList: [beacon17, beacon18, beacon19, beacon20, beacon21, beacon22, beacon23, beacon24, beacon25, beacon26, beacon27, beacon28, beacon29, beacon30, beacon31])
+        let project1: Project = Project(id: UUID(), name: "Project 1", beaconList: [beacon1, beacon2, beacon3, beacon4, beacon5, beacon6, beacon7, beacon8, beacon9, beacon10, beacon11, beacon12, beacon13, beacon14, beacon15, beacon16])
+        let project2: Project = Project(id: UUID(), name: "Project 2", beaconList: [beacon17, beacon18, beacon19, beacon20, beacon21, beacon22, beacon23, beacon24, beacon25, beacon26, beacon27, beacon28, beacon29, beacon30, beacon31])
         
         self.projectList = [project1, project2]
     }

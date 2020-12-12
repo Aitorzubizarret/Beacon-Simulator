@@ -41,7 +41,7 @@ class NewProjectViewController: UIViewController {
     ///
     private func configureUI() {
         self.titleLabel.text = "Project Name"
-        self.saveButton.setTitle("Save new project", for: UIControl.State.normal)
+        self.saveButton.setTitle("Save new Project", for: UIControl.State.normal)
         self.exitButton.setTitle("Exit", for: UIControl.State.normal)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -61,7 +61,7 @@ class NewProjectViewController: UIViewController {
     private func createNewProject() {
         if self.projectNameTextfield.text != "" {
             if let projectName: String = self.projectNameTextfield.text {
-                let newProject: Project = Project(name: projectName, beaconList: [])
+                let newProject: Project = Project(id: UUID(), name: projectName, beaconList: [])
                 self.projectsViewModel?.addProject(newProject: newProject)
                 
                 self.hideKeyboard()
