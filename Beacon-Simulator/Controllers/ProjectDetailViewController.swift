@@ -19,8 +19,20 @@ class ProjectDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.configNavigationBar()
+        
         self.addTableView()
+    }
+    
+    ///
+    /// Configures the Navigation Bar.
+    ///
+    private func configNavigationBar() {
+        // Title.
+        if let theProject = self.project {
+            self.title = theProject.name
+        }
     }
     
     ///
