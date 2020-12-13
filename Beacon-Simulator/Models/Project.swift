@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct Project {
-    let id: UUID
-    let name: String
-    let beaconList: [Beacon]
+class Project {
+    var id: UUID
+    var name: String
+    var beaconList: [Beacon]
+    
+    init(id: UUID, name: String, beaconList: [Beacon]) {
+        self.id = id
+        self.name = name
+        self.beaconList = beaconList
+    }
 }
