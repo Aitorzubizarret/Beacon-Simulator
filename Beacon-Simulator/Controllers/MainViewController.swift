@@ -107,7 +107,8 @@ extension MainViewController: TableViewActionsDelegate {
     func rowTapped(indexPath: IndexPath) {
         let projectDetailVC: ProjectDetailViewController = ProjectDetailViewController()
         if let projectList = self.projectsViewModel.projectList {
-            projectDetailVC.project = projectList[indexPath.row]
+            projectDetailVC.projectId = projectList[indexPath.row].id
+            projectDetailVC.projectsViewModel = self.projectsViewModel
             self.navigationController?.pushViewController(projectDetailVC, animated: true)
         }
     }

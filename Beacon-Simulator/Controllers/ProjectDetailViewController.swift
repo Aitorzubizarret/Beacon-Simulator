@@ -12,7 +12,13 @@ class ProjectDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var project: Project?
+    var projectId: UUID?
+    var project: Project? {
+        didSet {
+            self.tableView?.setObjectData(objects: project!.beaconList)
+        }
+    }
+    var projectsViewModel: ProjectsViewModel?
     var tableView: TableView?
     
     // MARK: - Methods
@@ -20,16 +26,36 @@ class ProjectDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.getProjectFromViewModel()
+        
         self.configNavigationBar()
         
         self.addTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getProjectFromViewModel()
+    }
+    
+    ///
+    /// Gets the Project object from the View Model.
+    ///
+    private func getProjectFromViewModel() {
+        guard let projectViewModel = self.projectsViewModel else { return }
+        
+        guard let projectId = self.projectId else { return }
+        
+        if let project = projectViewModel.getProject(projectId: projectId) {
+            self.project = project
+        }
     }
     
     ///
     /// Configures the Navigation Bar.
     ///
     private func configNavigationBar() {
-        // Title.
+        
+        // Project Title.
         if let theProject = self.project {
             self.title = theProject.name
         }
@@ -45,14 +71,11 @@ class ProjectDetailViewController: UIViewController {
         
         // Check the TableView.
         if let tableView = self.tableView {
-            if let project = self.project {
-                tableView.setObjectData(objects: project.beaconList as [Beacon])
-                tableView.actionsDelegate = self
-                
-                // Check the UIView from the TableView.
-                if let view: UIView = tableView.getTableView() {
-                    self.view.addSubview(view)
-                }
+            tableView.actionsDelegate = self
+            
+            // Check the UIView from the TableView.
+            if let view: UIView = tableView.getTableView() {
+                self.view.addSubview(view)
             }
         }
     }
