@@ -90,4 +90,18 @@ class ProjectsViewModel {
         }
         return foundProject
     }
+    
+    ///
+    /// Adds a new Beacon to a Project and saves in data source.
+    ///
+    public func addBeaconToProject(projectId: UUID, beacon: Beacon) {
+        
+        if let projects = self.projectList {
+            for i in 0 ..< projects.count {
+                if projects[i].id == projectId {
+                    projects[i].beaconList.append(beacon)
+                }
+            }
+        }
+    }
 }

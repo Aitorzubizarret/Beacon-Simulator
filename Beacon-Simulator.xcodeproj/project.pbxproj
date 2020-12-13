@@ -25,6 +25,8 @@
 		4215EB0A2581882C00F05B89 /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4215EB082581882C00F05B89 /* NewProjectViewController.swift */; };
 		4215EB0B2581882C00F05B89 /* NewProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4215EB092581882C00F05B89 /* NewProjectViewController.xib */; };
 		428AC4B02582D25800614DB5 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */; };
+		42CCB11E25855E60005E1D45 /* NewBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCB11C25855E60005E1D45 /* NewBeaconViewController.swift */; };
+		42CCB11F25855E60005E1D45 /* NewBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CCB11D25855E60005E1D45 /* NewBeaconViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		4215EB082581882C00F05B89 /* NewProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		4215EB092581882C00F05B89 /* NewProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewProjectViewController.xib; sourceTree = "<group>"; };
 		428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		42CCB11C25855E60005E1D45 /* NewBeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBeaconViewController.swift; sourceTree = "<group>"; };
+		42CCB11D25855E60005E1D45 /* NewBeaconViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewBeaconViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 			children = (
 				1A6063282576DEE3006D98E8 /* MainViewController.xib */,
 				4215EB092581882C00F05B89 /* NewProjectViewController.xib */,
+				42CCB11D25855E60005E1D45 /* NewBeaconViewController.xib */,
 				1ACE1CC2257C096E00B9933C /* ProjectDetailViewController.xib */,
 				1ACE1CBE257BFAAC00B9933C /* ProjectTableViewCell.xib */,
 				1ACE1CC6257C225C00B9933C /* BeaconTableViewCell.xib */,
@@ -121,6 +126,7 @@
 				1A6063272576DEE3006D98E8 /* MainViewController.swift */,
 				1ACE1CC1257C096E00B9933C /* ProjectDetailViewController.swift */,
 				4215EB082581882C00F05B89 /* NewProjectViewController.swift */,
+				42CCB11C25855E60005E1D45 /* NewBeaconViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 				1ACE1CC4257C096E00B9933C /* ProjectDetailViewController.xib in Resources */,
 				1A60632A2576DEE3006D98E8 /* MainViewController.xib in Resources */,
 				1A53809D2571A37600E7FE62 /* Assets.xcassets in Resources */,
+				42CCB11F25855E60005E1D45 /* NewBeaconViewController.xib in Resources */,
 				4215EB0B2581882C00F05B89 /* NewProjectViewController.xib in Resources */,
 				1ACE1CC0257BFAAC00B9933C /* ProjectTableViewCell.xib in Resources */,
 			);
@@ -227,6 +234,7 @@
 				1A963124257BC3D000CFA178 /* Beacon.swift in Sources */,
 				1ACE1CBC257BF77300B9933C /* Project.swift in Sources */,
 				1ACE1CC3257C096E00B9933C /* ProjectDetailViewController.swift in Sources */,
+				42CCB11E25855E60005E1D45 /* NewBeaconViewController.swift in Sources */,
 				428AC4B02582D25800614DB5 /* ProjectsViewModel.swift in Sources */,
 				4215EB0A2581882C00F05B89 /* NewProjectViewController.swift in Sources */,
 			);

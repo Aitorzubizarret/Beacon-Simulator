@@ -59,6 +59,22 @@ class ProjectDetailViewController: UIViewController {
         if let theProject = self.project {
             self.title = theProject.name
         }
+        
+        // Adds a button.
+        let addBeaconBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBeaconTapped))
+        navigationItem.rightBarButtonItem = addBeaconBarButton
+    }
+    
+    ///
+    /// Displays the view controller to create
+    ///
+    @objc func addBeaconTapped() {
+        let newBeaconVC: NewBeaconViewController = NewBeaconViewController()
+        newBeaconVC.projectsViewModel = self.projectsViewModel
+        if let project = self.project {
+            newBeaconVC.projectId = project.id
+        }
+        self.present(newBeaconVC, animated: true, completion: nil)
     }
     
     ///
