@@ -33,14 +33,25 @@ class MainViewController: UIViewController {
         self.addTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.updateTableViewData()
+    }
+    
     ///
-    /// Gets new data from the ViewModel.
+    /// Gets new data from the View Model.
     ///
     private func bind() {
         self.projectsViewModel.binding = {
-            if let data = self.projectsViewModel.projectList {
-                self.tableView?.setObjectData(objects: data)
-            }
+            self.updateTableViewData()
+        }
+    }
+    
+    ///
+    /// Gets data from the View Model and sends it to the Table View.
+    ///
+    private func updateTableViewData() {
+        if let data = self.projectsViewModel.projectList {
+            self.tableView?.setObjectData(objects: data)
         }
     }
     
