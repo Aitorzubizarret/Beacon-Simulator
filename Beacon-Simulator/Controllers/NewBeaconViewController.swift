@@ -47,6 +47,8 @@ class NewBeaconViewController: UIViewController {
     /// Configures the UI elements.
     ///
     private func configureUI() {
+        
+        // Labels text.
         self.titleLabel.text = "Beacon Name"
         self.UUIDLabel.text = "UUID"
         self.majorLabel.text = "Major"
@@ -54,6 +56,13 @@ class NewBeaconViewController: UIViewController {
         self.saveButton.setTitle("Save new Beacon", for: .normal)
         self.exitButton.setTitle("Exit", for: .normal)
         
+        // Keyboard types.
+        self.titleTextfield.keyboardType = .default
+        self.UUIDTextfield.keyboardType = .default
+        self.majorTextfield.keyboardType = .decimalPad
+        self.minorTextfield.keyboardType = .decimalPad
+        
+        // Gesture Recognizer to hide the keyboard.
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.view.addGestureRecognizer(tap)
     }
