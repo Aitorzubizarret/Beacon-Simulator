@@ -78,15 +78,25 @@ class NewBeaconViewController: UIViewController {
     /// Creates a new Beacon.
     ///
     private func createNewBeacon() {
-        let newBeacon: Beacon = Beacon(uuid: "0000", major: "1", minor: "1", name: "Demo")
+        let (valuesCorrect, uuid, major, minor) = self.checkValues()
         
-        guard let projectId = self.projectId else { return }
-        
-        guard let projectsViewModel = self.projectsViewModel else { return }
-        
-        projectsViewModel.addBeaconToProject(projectId: projectId, beacon: newBeacon)
-        
-        self.exitViewController()
+        if valuesCorrect {
+            let newBeacon: Beacon = Beacon(uuid: uuid!, major: major!, minor: minor!, name: self.titleTextfield.text!)
+            
+            guard let projectId = self.projectId else { return }
+            
+            guard let projectsViewModel = self.projectsViewModel else { return }
+            
+            projectsViewModel.addBeaconToProject(projectId: projectId, beacon: newBeacon)
+            
+            self.exitViewController()
+        } else {
+            let alertMessage: UIAlertController = UIAlertController(title: "Alert", message: "The values are not correct.", preferredStyle: .alert)
+            let OKButton: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertMessage.addAction(OKButton)
+            
+            self.present(alertMessage, animated: true, completion: nil)
+        }
     }
     
     ///
@@ -94,5 +104,26 @@ class NewBeaconViewController: UIViewController {
     ///
     private func exitViewController() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    ///
+    /// Checks the values from the Textfields before creating the Beacon.
+    ///
+    private func checkValues() -> (Bool, String?, String?, String?) {
+        guard let UUIDText: String = self.UUIDTextfield.text,
+              let MAJORText: String = self.majorTextfield.text,
+              let MINORText: String = self.minorTextfield.text,
+              let _: String = self.titleTextfield.text
+        else { return (false, nil, nil, nil) }
+        
+        let UUIDValue: UUID? = UUID(uuidString: UUIDText)
+        let MAJORValue: Int? = Int(MAJORText)
+        let MINORValue: Int? = Int(MINORText)
+        
+        if let _ = UUIDValue, let _ = MAJORValue, let _ = MINORValue {
+            return (true, UUIDText, MAJORText, MINORText)
+        }
+        
+        return (false, nil, nil, nil)
     }
 }
