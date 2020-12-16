@@ -63,11 +63,11 @@ class BeaconTableViewCell: UITableViewCell {
         self.minorValue.font = UIFont(name: "Arial", size: 12)
         
         self.uuidTitle.text = "UUID : "
-        self.uuidValue.text = beacon.uuid
+        self.uuidValue.text = beacon.uuid.uuidString
         self.majorTitle.text = "Major : "
-        self.majorValue.text = beacon.major
+        self.majorValue.text = beacon.major.description
         self.minorTitle.text = "Minor : "
-        self.minorValue.text = beacon.minor
+        self.minorValue.text = beacon.minor.description
         
         self.broadcastSwitch.isOn = false
     }

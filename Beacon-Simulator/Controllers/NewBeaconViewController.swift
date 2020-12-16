@@ -80,8 +80,12 @@ class NewBeaconViewController: UIViewController {
     private func createNewBeacon() {
         let (valuesCorrect, uuid, major, minor) = self.checkValues()
         
-        if valuesCorrect {
-            let newBeacon: Beacon = Beacon(uuid: uuid!, major: major!, minor: minor!, name: self.titleTextfield.text!)
+        if valuesCorrect,
+           let uuid = uuid,
+           let major = major,
+           let minor = minor {
+            
+            let newBeacon: Beacon = Beacon(uuid: uuid, major: major, minor: minor, name: self.titleTextfield.text!)
             
             guard let projectId = self.projectId else { return }
             
@@ -109,7 +113,7 @@ class NewBeaconViewController: UIViewController {
     ///
     /// Checks the values from the Textfields before creating the Beacon.
     ///
-    private func checkValues() -> (Bool, String?, String?, String?) {
+    private func checkValues() -> (Bool, UUID?, UInt16?, UInt16?) {
         guard let UUIDText: String = self.UUIDTextfield.text,
               let MAJORText: String = self.majorTextfield.text,
               let MINORText: String = self.minorTextfield.text,
@@ -117,11 +121,11 @@ class NewBeaconViewController: UIViewController {
         else { return (false, nil, nil, nil) }
         
         let UUIDValue: UUID? = UUID(uuidString: UUIDText)
-        let MAJORValue: Int? = Int(MAJORText)
-        let MINORValue: Int? = Int(MINORText)
+        let MAJORValue: UInt16? = UInt16(MAJORText)
+        let MINORValue: UInt16? = UInt16(MINORText)
         
-        if let _ = UUIDValue, let _ = MAJORValue, let _ = MINORValue {
-            return (true, UUIDText, MAJORText, MINORText)
+        if let uuid = UUIDValue, let major = MAJORValue, let minor = MINORValue {
+            return (true, uuid, major, minor)
         }
         
         return (false, nil, nil, nil)

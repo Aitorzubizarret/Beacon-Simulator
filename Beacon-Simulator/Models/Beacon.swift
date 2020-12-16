@@ -9,8 +9,8 @@
 import Foundation
 
 struct Beacon {
-    let uuid: String
-    let major: String
-    let minor: String
+    let uuid: UUID
+    let major: UInt16
+    let minor: UInt16
     let name: String
 }
