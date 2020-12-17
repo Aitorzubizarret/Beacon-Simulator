@@ -46,6 +46,9 @@ class NewProjectViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        // Set the focus on the textfield.
+        self.projectNameTextfield.becomeFirstResponder()
     }
     
     ///
