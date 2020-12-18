@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>The app needs the bluetooth to simulate the beacons.</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>The app needs the bluetooth to simulate the beacons.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app needs your location permission to use the Bluetooth capabilities.</string>
 	<key>UIApplicationSceneManifest</key>
