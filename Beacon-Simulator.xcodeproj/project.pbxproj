@@ -27,6 +27,8 @@
 		428AC4B02582D25800614DB5 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */; };
 		42CCB11E25855E60005E1D45 /* NewBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCB11C25855E60005E1D45 /* NewBeaconViewController.swift */; };
 		42CCB11F25855E60005E1D45 /* NewBeaconViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CCB11D25855E60005E1D45 /* NewBeaconViewController.xib */; };
+		42DC4D6B258F849600C2D73C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 42DC4D6A258F849600C2D73C /* Settings.bundle */; };
+		42DC4D6E258F84B200C2D73C /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DC4D6D258F84B200C2D73C /* SettingsBundleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		428AC4AF2582D25800614DB5 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		42CCB11C25855E60005E1D45 /* NewBeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBeaconViewController.swift; sourceTree = "<group>"; };
 		42CCB11D25855E60005E1D45 /* NewBeaconViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewBeaconViewController.xib; sourceTree = "<group>"; };
+		42DC4D6A258F849600C2D73C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		42DC4D6D258F84B200C2D73C /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 				1A53809C2571A37600E7FE62 /* Assets.xcassets */,
 				1A53809E2571A37600E7FE62 /* LaunchScreen.storyboard */,
 				1A5380A12571A37600E7FE62 /* Info.plist */,
+				42DC4D6A258F849600C2D73C /* Settings.bundle */,
+				42DC4D6D258F84B200C2D73C /* SettingsBundleHelper.swift */,
 			);
 			path = "Beacon-Simulator";
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 				1A53809D2571A37600E7FE62 /* Assets.xcassets in Resources */,
 				42CCB11F25855E60005E1D45 /* NewBeaconViewController.xib in Resources */,
 				4215EB0B2581882C00F05B89 /* NewProjectViewController.xib in Resources */,
+				42DC4D6B258F849600C2D73C /* Settings.bundle in Resources */,
 				1ACE1CC0257BFAAC00B9933C /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +237,7 @@
 				1ACE1CBF257BFAAC00B9933C /* ProjectTableViewCell.swift in Sources */,
 				1AF43D19257BC7B500C99BCF /* TableView.swift in Sources */,
 				1A5380962571A37500E7FE62 /* SceneDelegate.swift in Sources */,
+				42DC4D6E258F84B200C2D73C /* SettingsBundleHelper.swift in Sources */,
 				1A6063292576DEE3006D98E8 /* MainViewController.swift in Sources */,
 				1A963124257BC3D000CFA178 /* Beacon.swift in Sources */,
 				1ACE1CBC257BF77300B9933C /* Project.swift in Sources */,

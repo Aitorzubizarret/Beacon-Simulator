@@ -30,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        SettingsBundleHelper().setAppVersion()
+        SettingsBundleHelper().setBuildVersion()
+    }
+    
     // MARK: UISceneSession Lifecycle
     @available (iOS 13, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
